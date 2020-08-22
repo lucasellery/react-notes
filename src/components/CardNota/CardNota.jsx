@@ -6,12 +6,17 @@ class CardNota extends Component {
     return (
       <section className="card-nota">
         <header className="card-nota-cabecalho">
-          <h3 className="card-nota-titulo">Título</h3>
+          <h3 className="card-nota-titulo">{this.props.titulo}</h3>
         </header>
-        <p className="card-nota-texto">Escreva sua nota</p>
+        <p className="card-nota-texto">{this.props.texto}</p>
       </section>
     );
   }
 }
 
 export default CardNota;
+
+/**
+ * TODO: Nos cards criados só aparece o texto, fazer com que apareça o título também
+ * TODO: https://github.com/alura-cursos/1817-react-classes/tree/aula5
+ */

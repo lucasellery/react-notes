@@ -39,7 +39,7 @@ class FormularioCadastro extends Component {
         />
 
         <textarea
-          rows={15}
+          rows={10}
           placeholder="Escreva sua nota"
           className="form-cadastro_input"
           onChange={this._handleMudancaTexto.bind(this)}

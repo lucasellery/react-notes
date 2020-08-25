@@ -6,6 +6,6 @@
     --primaria: #58a4b0;
     --secundaria: #373f51;
     --secundaria-ativa: #cccccc;
-    --fundo: #ffffff;
+    --fundo: rgb(129, 49, 143);
     --fundo-detalhes: #ececec;
 }

@@ -12,6 +12,7 @@ class ListaDeNotas extends Component {
               <CardNota titulo={nota.titulo} texto={nota.texto}/>
             </li>
           );
+          
         })}
       </ul>
     );

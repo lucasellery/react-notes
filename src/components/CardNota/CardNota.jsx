@@ -15,8 +15,3 @@ class CardNota extends Component {
 }
 
 export default CardNota;
-
-/**
- * TODO: Nos cards criados só aparece o texto, fazer com que apareça o título também
- * TODO: https://github.com/alura-cursos/1817-react-classes/tree/aula5
- */

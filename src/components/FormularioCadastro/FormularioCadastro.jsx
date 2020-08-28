@@ -31,10 +31,15 @@ class FormularioCadastro extends Component {
   render() {
     return (
       <form className="form-cadastro" onSubmit={this._criarNota.bind(this)}>
+        <select className="form-cadastro_input">
+          {this.props.categorias.map((categoria) => {
+            return <option>{categoria}</option>;
+          })}
+        </select>
         <input
           className="form-cadastro_input"
           type="text"
-          placeholder="Título"
+          placeholder="Título"  
           onChange={this._handleMudancaTitulo.bind(this)} // pega o metodo dessa instância
         />
 

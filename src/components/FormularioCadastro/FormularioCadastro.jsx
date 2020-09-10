@@ -7,17 +7,28 @@ class FormularioCadastro extends Component {
     this.titulo = "";
     this.texto = "";
     this.categoria = "Sem Categoria";
+    this.state = { categorias: [] };
+    this._novasCategorias = this._novasCategorias.bind(this);
   }
 
-  _handleMudancaCategoria(event){
+  componentDidMount() {
+    const referenciaNovaCategoria = this._novasCategorias.bind(this);
+    this.props.categorias.inscrever(referenciaNovaCategoria);
+  }
+
+  componentWillMount() {
+    this.props.categorias.desinscrever(this._novasCategorias);
+  }
+
+  _novasCategorias(categorias) {
+    this.setState({ ...this.state, categorias });
+  }
+
+  _handleMudancaCategoria(event) {
     event.stopPropagation();
     this.categoria = event.target.value; // cetegoria vai ser o valor do elemento que estamos selecionando
-  } 
+  }
 
-  /**
-   * * Sempre que o Handler for chamado,
-   * * vamos atribuir ao campo de títlo no atributo da classe;
-   */
   _handleMudancaTitulo(event) {
     event.stopPropagation();
     this.titulo = event.target.value;
@@ -37,10 +48,13 @@ class FormularioCadastro extends Component {
   render() {
     return (
       <form className="form-cadastro" onSubmit={this._criarNota.bind(this)}>
-        <select onChange={this._handleMudancaCategoria.bind(this)} className="form-cadastro_input">
+        <select
+          onChange={this._handleMudancaCategoria.bind(this)}
+          className="form-cadastro_input"
+        >
           <option>Sem categoria</option>
-          {this.props.categorias.map((categoria) => {
-            return <option>{categoria}</option>;
+          {this.state.categorias.map((categoria, index) => {
+            return <option key={index}>{categoria}</option>;
           })}
         </select>
         <input
@@ -66,3 +80,8 @@ class FormularioCadastro extends Component {
 }
 
 export default FormularioCadastro;
+
+/**
+ * * Sempre que o Handler for chamado,
+ * * vamos atribuir ao campo de títlo no atributo da classe;
+ */

@@ -2,6 +2,25 @@ import React, { Component } from "react";
 import "./style.css";
 
 class ListaDeCategorias extends Component {
+  constructor() {
+    super();
+    this.state = { categorias: [] };
+    this._novasCategorias = this._novasCategorias.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.categorias.inscrever(this._novasCategorias.bind(this));
+  }
+
+  componentWillUnmount() {
+    this.props.categorias.desinscrever(this._novasCategorias.bind(this));
+  }
+
+  _novasCategorias(categorias) {
+    console.log(categorias);
+    this.setState({ ...this.state, categorias });
+  }
+
   _handleEventoInput(event) {
     if (event.key === "Enter") {
       let valorCategoria = event.target.value;
@@ -13,7 +32,7 @@ class ListaDeCategorias extends Component {
     return (
       <section className="lista-categorias">
         <ul className="lista-categorias_lista">
-          {this.props.categorias.map((categoria, index) => {
+          {this.props.categorias.categorias.map((categoria, index) => {
             return (
               <li key={index} className="lista-categorias_item">
                 {categoria}
